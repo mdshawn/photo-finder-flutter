@@ -4,6 +4,7 @@ import 'package:photo_finder/gallery_state.dart';
 import 'package:photo_finder/gallery_view.dart';
 import 'package:photo_finder/pages/developer.dart';
 import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(
@@ -23,14 +24,16 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: ThemeData(   
-              primarySwatch: Colors.indigo, //here is where the error resides 
+              primarySwatch: Colors.indigo,
+              fontFamily: 'Sedgwick Ave',
  ), 
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: Text(
             "Photo Finder",
-            style: TextStyle(color: Colors.white),
+            style: GoogleFonts.sedgwickAve(textStyle: TextStyle(color: Colors.white)), 
+            
           ),
           centerTitle: true,
         ),
@@ -56,7 +59,7 @@ class SearchPage extends StatelessWidget {
               title: TextFormField(
                 controller: _searchController,
                 decoration: InputDecoration(
-                  hintText: "Eg Dogs, Cats & Bananas",
+                  hintText: "Eg Birds, River & Sky",
                   labelText: "Enter a category",
                   contentPadding:
                       const EdgeInsets.fromLTRB(15.0, 20.0, 10.0, 25.0),
@@ -70,13 +73,18 @@ class SearchPage extends StatelessWidget {
               height: 40,
               child: ElevatedButton(
                 onPressed: () {
+                  if (_searchController != null) {
+                    Get.to(() => GalleryView(searchdata: _searchController.text));
+                  }
                   // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>GalleryView(searchdata: _searchController.text)));
-                  Get.to(() => GalleryView(searchdata: _searchController.text));
+                  
                 },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.all(20),
                 ),
-                child: Text("Search"),
+                child: Text("Search",style: GoogleFonts.sedgwickAve(
+    textStyle: TextStyle(color: Colors.white, letterSpacing: .5),
+  ),),
               ),
             ),
           ],
@@ -94,7 +102,7 @@ class SearchPage extends StatelessWidget {
     ),
   ),
   floatingActionButton:
-      FloatingActionButton(child: Icon(Icons.search), onPressed: () {}),
+      FloatingActionButton(child: Icon(Icons.home), onPressed: () {}),
   floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       ),
     );

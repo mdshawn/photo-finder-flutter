@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:photo_finder/gallery_state.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:provider/provider.dart';
@@ -22,17 +23,25 @@ class FullView extends StatelessWidget {
       imageProvider: NetworkImage(state.links[state.selectorIndex]),
     )
         ),
-        Center(
-          child: PhotoView(
-      imageProvider: NetworkImage(state.links[state.selectorIndex]),
-    )
-        ),
-        Center(
-          child: Text('Third Page'),
-        )
+       
       ],
     ),
       ),),
+
+      
+  bottomNavigationBar: BottomAppBar(
+    child: Row(
+      children: [
+        IconButton(icon: Icon(Icons.help), onPressed: () {}),
+        
+      ],
+    ),
+  ),
+  floatingActionButton:
+      FloatingActionButton(child: Icon(Icons.arrow_back), onPressed: () {
+        Get.back();
+      }),
+  floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

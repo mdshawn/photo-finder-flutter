@@ -17,6 +17,7 @@ class GalleryState with ChangeNotifier {
   }
 
   void load(String searchKey) async {
+    
     links.clear();
     var url = Uri.parse(
         'https://api.pexels.com/v1/search?query=$searchKey&per_page=100');

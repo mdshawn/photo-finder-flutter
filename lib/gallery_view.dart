@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:photo_finder/fullview.dart';
 import 'package:photo_finder/gallery_state.dart';
 import 'package:photo_finder/main.dart';
@@ -7,6 +8,7 @@ import 'package:photo_finder/pages/developer.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class GalleryView extends StatelessWidget {
   String searchdata = '';
@@ -18,9 +20,13 @@ class GalleryView extends StatelessWidget {
     context.read<GalleryState>().load(this.searchdata);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Search Result',style: TextStyle(color: Colors.white),),
-        centerTitle: true,
-      ),
+        title: Text('Search Result',
+        textAlign: TextAlign.center,
+        style:  GoogleFonts.sedgwickAve(
+    textStyle: TextStyle(color: Colors.white, letterSpacing: .5),
+  ),
+  
+      ),),
       body: Consumer<GalleryState>(
         builder: (context, state, child) {
           return SingleChildScrollView(
@@ -99,7 +105,9 @@ class GalleryView extends StatelessWidget {
     ),
   ),
   floatingActionButton:
-      FloatingActionButton(child: Icon(Icons.search), onPressed: () {}),
+      FloatingActionButton(child: Icon(Icons.search), onPressed: () {
+        Get.back();
+      }),
   floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }

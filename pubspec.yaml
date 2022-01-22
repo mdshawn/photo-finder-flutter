@@ -39,6 +39,7 @@ dependencies:
   get: ^4.6.1
   photo_view: ^0.13.0
   contactus: ^1.2.0
+  google_fonts: ^2.2.0
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +57,10 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  fonts:
+    - family: Sedgwick Ave
+      fonts:
+        - asset: fonts/SedgwickAve-Regular.ttf
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
