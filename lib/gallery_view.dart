@@ -46,9 +46,9 @@ class GalleryView extends StatelessWidget {
                       ),
                     ),
                     onChanged: (value) {
-                      Future.delayed(const Duration(seconds: 1), () {
+                      
                         state.load(value);
-                      });
+                      
                     },
                   ),
                 ),
