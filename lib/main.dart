@@ -23,17 +23,17 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      theme: ThemeData(   
-              primarySwatch: Colors.indigo,
-              fontFamily: 'Sedgwick Ave',
- ), 
+      theme: ThemeData(
+        primarySwatch: Colors.indigo,
+        fontFamily: 'Sedgwick Ave',
+      ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: Text(
             "Photo Finder",
-            style: GoogleFonts.sedgwickAve(textStyle: TextStyle(color: Colors.white)), 
-            
+            style: GoogleFonts.sedgwickAve(
+                textStyle: TextStyle(color: Colors.white)),
           ),
           centerTitle: true,
         ),
@@ -42,19 +42,20 @@ class SearchPage extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           children: <Widget>[
             Container(
-                constraints:
-                    BoxConstraints.tightFor(width: 200.0, height: 200.0),
-                child: Container(
-                  height: 250,
-                  width: 250,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50.0),
+              // constraints: BoxConstraints.tightFor(width: 200.0, height: 200.0),
+              child: Container(
+                margin: EdgeInsets.all(10),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image(
+                    height: 200,
+                    width: 200,
+                    image: NetworkImage(
+                        'https://i.ibb.co/wCXTRZg/CPAD.gif'),
                   ),
-                  child: Image.network(
-                  "https://i.ibb.co/qx8ksHq/96859873.jpg",
-                  fit: BoxFit.scaleDown,
                 ),
-                ),),
+              ),
+            ),
             ListTile(
               title: TextFormField(
                 controller: _searchController,
@@ -62,7 +63,7 @@ class SearchPage extends StatelessWidget {
                   hintText: "Eg Birds, River & Sky",
                   labelText: "Enter a category",
                   contentPadding:
-                      const EdgeInsets.fromLTRB(15.0, 20.0, 10.0, 25.0),
+                       EdgeInsets.fromLTRB(15.0, 20.0, 10.0, 25.0),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
@@ -70,40 +71,45 @@ class SearchPage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 40,
               child: ElevatedButton(
                 onPressed: () {
-                  if (_searchController != null) {
-                    Get.to(() => GalleryView(searchdata: _searchController.text));
+                  if (_searchController.text.isNotEmpty) {
+                    Get.to(
+                        () => GalleryView(searchdata: _searchController.text));
                   }
                   // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>GalleryView(searchdata: _searchController.text)));
-                  
                 },
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.all(10),
                 ),
-                child: Text("Search",style: GoogleFonts.sedgwickAve(
-    textStyle: TextStyle(color: Colors.white, letterSpacing: .5),
-  ),),
+                child: Text(
+                  "Search",
+                  style: GoogleFonts.sedgwickAve(
+                    textStyle:
+                        TextStyle(color: Colors.white, letterSpacing: .5),
+                  ),
+                ),
               ),
             ),
           ],
         ),
         bottomNavigationBar: BottomAppBar(
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        IconButton(icon: Icon(Icons.help), onPressed: () {}),
-        Spacer(),
-        IconButton(icon: Icon(Icons.people), onPressed: () {
-          Get.to(DevContact());
-        }),
-      ],
-    ),
-  ),
-  floatingActionButton:
-      FloatingActionButton(child: Icon(Icons.home), onPressed: () {}),
-  floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconButton(icon: Icon(Icons.help), onPressed: () {}),
+              Spacer(),
+              IconButton(
+                  icon: Icon(Icons.people),
+                  onPressed: () {
+                    Get.to(DevContact());
+                  }),
+            ],
+          ),
+        ),
+        floatingActionButton:
+            FloatingActionButton(child: Icon(Icons.home), onPressed: () {}),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       ),
     );
   }

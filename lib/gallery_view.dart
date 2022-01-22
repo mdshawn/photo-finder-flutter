@@ -59,6 +59,7 @@ class GalleryView extends StatelessWidget {
                     : Container(
                         margin: EdgeInsets.all(10),
                         child: GridView.builder(
+                          physics: NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: state.links.length,
                           gridDelegate:
