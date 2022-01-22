@@ -9,19 +9,27 @@ class DevContact extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ContactUs(
-      cardColor: Colors.white,
-      textColor: Colors.indigo,
-      logo: NetworkImage('https://i.ibb.co/qWPRjxB/Mujahidul-Islam-PP-SIZE-College-Dress-1.jpg'),
-      email: 'mdshawn0898@gmail.com',
-      companyName: 'Mujahidul Islam',
-      companyColor: Colors.indigo,
-      dividerThickness: 2,
-      phoneNumber: '+880-19203-9105',
-      website: 'https://misitzone.xyz',
-      githubUserName: 'mdshawn',
-      facebookHandle: 'md.shawn.101', 
-      taglineColor: Colors.indigo,),
+      appBar: AppBar(
+        title: Text("Developer Contact"),
+      ),
+      body: Column(
+        children: [
+          SizedBox(height: 10,),
+          ContactUs(
+          cardColor: Colors.white,
+          textColor: Colors.indigo,
+          logo: NetworkImage('https://i.ibb.co/qWPRjxB/Mujahidul-Islam-PP-SIZE-College-Dress-1.jpg'),
+          email: 'mdshawn0898@gmail.com',
+          companyName: 'Mujahidul Islam',
+          companyColor: Colors.indigo,
+          dividerThickness: 2,
+          phoneNumber: '+880-19203-9105',
+          website: 'https://misitzone.xyz',
+          githubUserName: 'mdshawn',
+          facebookHandle: 'md.shawn.101', 
+          taglineColor: Colors.indigo,),
+        ],
+      ),
 
             bottomNavigationBar: BottomAppBar(
     child: Row(
@@ -35,7 +43,7 @@ class DevContact extends StatelessWidget {
   ),
   floatingActionButton:
       FloatingActionButton(child: Icon(Icons.home), onPressed: () {
-        Get.to(SearchPage());
+        Get.back();
       }),
   floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       );  

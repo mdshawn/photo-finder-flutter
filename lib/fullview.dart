@@ -23,7 +23,9 @@ class FullView extends StatelessWidget {
     )
         ),
         Center(
-          child: Text('Second Page'),
+          child: PhotoView(
+      imageProvider: NetworkImage(state.links[state.selectorIndex]),
+    )
         ),
         Center(
           child: Text('Third Page'),
